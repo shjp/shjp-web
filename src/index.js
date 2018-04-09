@@ -1,8 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import './index.css';
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Home from "./components/home";
+
+// const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+
+ReactDOM.render(
+    <Provider>
+        <BrowserRouter>
+            <div>
+                <Header />
+                <Switch>
+                    {/*<Route path="/about" component={} />*/}
+                    {/*<Route path="/announcement" component={} />*/}
+                    {/*<Route path="/main" component={} />*/}
+                    <Route path="/" component={Home} />
+                </Switch>
+                <Footer />
+            </div>
+        </BrowserRouter>
+    </Provider>
+, document.querySelector('#root'));
+
+
+//import App from './App';
+//import registerServiceWorker from './registerServiceWorker';
+
+// ReactDOM.render(<App />, document.getElementById('root'));
+// registerServiceWorker();
