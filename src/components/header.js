@@ -22,12 +22,13 @@ class Header extends Component {
                     </div>
                     <div className="nav navbar-collapse" id="navbarColor01">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active"><a href="#">Home</a></li>
+                        <li className="nav-item active"><Link to="/">Home</Link></li>
                         <li className="nav-item dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#">About<span className="caret"></span></a>
-                            <ul className="dropdown-menu">
-                                <li><a href="#">Page 1-1</a></li>
-                                <li><a href="#">Page 1-2</a></li>
-                                <li><a href="#">Page 1-3</a></li>
+                            <ul className="dropdown-menu" id="dropdown">
+                                <li><a href="#YA">Young Adults</a></li>
+                                <li><a href="#choir">Choir</a></li>
+                                <li><a href="#liturgy">Liturgy</a></li>
+                                <li><a href="#legio>">Marie Legio</a></li>
                             </ul>
                         </li>
                         <li className="nav-item"><a href="#">Announcement</a></li>

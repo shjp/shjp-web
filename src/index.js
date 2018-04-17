@@ -7,6 +7,7 @@ import './index.css';
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./components/home";
+import Developer from "./components/developer";
 
 // const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -18,7 +19,7 @@ ReactDOM.render(
                 <Switch>
                     {/*<Route path="/about" component={} />*/}
                     {/*<Route path="/announcement" component={} />*/}
-                    {/*<Route path="/main" component={} />*/}
+                    <Route path="/developer" component={Developer} />
                     <Route path="/" component={Home} />
                 </Switch>
                 <Footer />
