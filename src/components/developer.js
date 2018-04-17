@@ -35,9 +35,10 @@ class Developer extends Component {
                                 </p>
                             </div>
                             <div className="col-md-12 section4">
-                                <a href="https://www.facebook.com/paolo.chanhwan.chang" className="fa fa-facebook-official" aria-hidden="true"></a>
-                                <a href="https://www.instagram.com/j.paolo/" className="fa fa-instagram" aria-hidden="true"></a>
-                                <a href="mailto:chanhwan.chang@gmail.com" className="fa fa-envelope" aria-hidden="true"></a>
+                                <a href="https://www.facebook.com/paolo.chanhwan.chang" className="fa fa-facebook-official" target="_blank" aria-hidden="true"></a>
+                                <a href="https://www.instagram.com/j.paolo/" className="fa fa-instagram" target="_blank" aria-hidden="true"></a>
+                                <a href="mailto:chanhwan.chang@gmail.com" className="fa fa-envelope" target="_blank" aria-hidden="true"></a>
+                                <a href="https://github.com/PaoloChang" className="fa fa-github-square" target="_blank" aria-hidden="true"></a>
                             </div>
                         </div>
                     </div>
@@ -53,14 +54,15 @@ class Developer extends Component {
                             <div className="col-md-12 section3">
                                 <p>
                                     As known as God Sangkon, he is the mentor of this team and has trendmous
-                                    experiences on programming including Phthon, React, Java, Go, etc.
+                                    experiences on programming including Python, React, Java, Go, etc.
                                     He now works at Uncharted Software in downtown Toronto as Software Engineer.
                                 </p>
                             </div>
                             <div className="col-md-12 section4">
-                                <a href="//www.facebook.com/sangkon.lee.1422" className="fa fa-facebook-official" aria-hidden="true"></a>
-                                <a href="https://www.instagram.com/?hl=en" className="fa fa-instagram" aria-hidden="true"></a>
-                                <a href="mailto:lee.sg16@gmail.com" className="fa fa-envelope" aria-hidden="true"></a>
+                                <a href="//www.facebook.com/sangkon.lee.1422" className="fa fa-facebook-official" target="_blank" aria-hidden="true"></a>
+                                <a href="https://www.instagram.com/?hl=en" className="fa fa-instagram" target="_blank" aria-hidden="true"></a>
+                                <a href="mailto:lee.sg16@gmail.com" className="fa fa-envelope" target="_blank" aria-hidden="true"></a>
+                                <a href="https://github.com/sanggonlee" className="fa fa-github-square" target="_blank" aria-hidden="true"></a>
                             </div>
                         </div>
                     </div>
@@ -81,10 +83,10 @@ class Developer extends Component {
                                 </p>
                             </div>
                             <div className="col-md-12 section4">
-
-                                <a href="https://www.facebook.com/jungyup.kim.92" className="fa fa-facebook-official" aria-hidden="true"></a>
-                                <a href="https://www.instagram.com/spicynwolf/" className="fa fa-instagram" aria-hidden="true"></a>
-                                <a href="mailto:spicynwolf@gmail.com" className="fa fa-envelope" aria-hidden="true"></a>
+                                <a href="https://www.facebook.com/jungyup.kim.92" className="fa fa-facebook-official" target="_blank" aria-hidden="true"></a>
+                                <a href="https://www.instagram.com/spicynwolf/" className="fa fa-instagram" target="_blank" aria-hidden="true"></a>
+                                <a href="mailto:spicynwolf@gmail.com" className="fa fa-envelope" target="_blank" aria-hidden="true"></a>
+                                <a href="https://github.com/jungyup" className="fa fa-github-square" target="_blank" aria-hidden="true"></a>
                             </div>
                         </div>
                     </div>
