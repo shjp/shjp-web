@@ -11,3 +11,10 @@ a {
 a:hover {
     color: greenyellow;
 }
+#dropdown {
+    background-color: #e7e7e7;
+}
+#dropdown > li > a {
+    color: #0c5460;
+    margin-left: 10px;
+}

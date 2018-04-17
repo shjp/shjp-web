@@ -27,18 +27,18 @@ class Footer extends Component {
                             <div className="row">
                             <div className="col-md-6">
                                 <ul className="pages">
-                                    <li><a href="#">Home</a></li>
+                                    <li><Link to="/">Home</Link></li>
                                     <li><a href="#">Announcement</a></li>
                                     <li><a href="#">Upcoming Events</a></li>
                                     <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Developers</a></li>
+                                    <li><Link to="/developer">Developers</Link></li>
                                 </ul>
                             </div>
                             <div className="col-md-6">
                                 <ul className="list">
-                                    <li><a href="#">Main SHJP Website</a></li>
-                                    <li><a href="#">Daily Missa Website</a></li>
-                                    <li><a href="#">GitHub</a></li>
+                                    <li><a href="http://shjparish.ca/" target="_blank">Main SHJP Website</a></li>
+                                    <li><a href="http://maria.catholic.or.kr/mi_pr/missa/missa.asp" target="_blank">Daily Missa Website</a></li>
+                                    <li><a href="https://github.com/shjp" target="_blank">GitHub</a></li>
                                 </ul>
                             </div>
                             </div>
@@ -46,7 +46,7 @@ class Footer extends Component {
                         <div className="col-md-3 footer-soc animated fadeInUp">
                             <h4>Follow Us</h4>
                             <ul>
-                                <li><a href="#">Facebook</a></li>
+                                <li><a href="https://www.facebook.com/groups/267600486622080/" target="_blank">Facebook</a></li>
                                 <li><a href="#">Instagram</a></li>
                                 <li><a href="#">Twitter</a></li>
                             </ul>
