@@ -1,0 +1,14 @@
+.group-card-container {
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 2px;
+
+  .name {
+    padding: 10px;
+  }
+
+  .description {
+    padding: 10px;
+  }
+}
