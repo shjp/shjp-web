@@ -1,0 +1,10 @@
+$shjp-primary:   #ff814c;
+$shjp-secondary: #008daa;
+
+.shjp-bg-primary   { background-color: $shjp-primary; }
+.shjp-bg-secondary { background-color: $shjp-secondary; }
+
+a:hover {
+  color: $shjp-secondary;
+  text-decoration: none;
+}
