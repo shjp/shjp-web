@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import { gql } from 'api/graphql';
-import { getGroups } from 'store/actions/groups';
+import React, { memo, useEffect } from 'react';
+import { useActions, useStore } from 'easy-peasy';
+import gql from 'api/gql';
 import GroupList from './GroupList';
 
-function GroupListContainer({ getGroups, groups }) {
+function GroupListContainer() {
+
+  const getGroups = useActions(actions => actions.groups.getGroups);
+  const groups = useStore(state => state.groups.groups);
 
   useEffect(() => {
     getGroups(gql`
@@ -23,7 +24,4 @@ function GroupListContainer({ getGroups, groups }) {
   );
 }
 
-export default connect(
-  state => ({ groups: state.groups.groups }),
-  { getGroups }
-)(GroupListContainer);
+export default memo(GroupListContainer);

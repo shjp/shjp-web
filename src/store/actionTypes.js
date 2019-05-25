@@ -1,1 +1,0 @@
-export const GET_GROUPS = Symbol('GET_GROUPS');

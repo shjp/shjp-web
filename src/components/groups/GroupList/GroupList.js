@@ -4,7 +4,7 @@ import GroupCard from 'components/groups/GroupCard';
 
 import './GroupList.scss';
 
-function GroupList({ groups }) {
+function GroupList({ groups = [] }) {
   return (
     <div>
       Groups

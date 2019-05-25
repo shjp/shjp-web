@@ -1,0 +1,24 @@
+.email-login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .form {
+    padding: 10px;
+
+    .field {
+      width: 100%;
+    }
+
+    .submit-container {
+      margin: 10px 0;
+      text-align: right;
+    }
+  }
+}
