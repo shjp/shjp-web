@@ -22,13 +22,13 @@ export default function Footer() {
                                 <li><Link to="/developers">Developers</Link></li>
                             </ul>
                         </div>
-                    <div className="col-md-6">
-                        <ul className="list">
-                            <li><a href="http://shjparish.ca/" target="_blank" rel="noopener noreferrer">Main SHJP Website</a></li>
-                            <li><a href="http://maria.catholic.or.kr/mi_pr/missa/missa.asp" target="_blank" rel="noopener noreferrer">Daily Missa Website</a></li>
-                            <li><a href="https://github.com/shjp" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                        </ul>
-                    </div>
+                        <div className="col-md-6">
+                            <ul className="list">
+                                <li><a href="http://shjparish.ca/" target="_blank" rel="noopener noreferrer">Main SHJP Website</a></li>
+                                <li><a href="http://maria.catholic.or.kr/mi_pr/missa/missa.asp" target="_blank" rel="noopener noreferrer">Daily Missa Website</a></li>
+                                <li><a href="https://github.com/shjp" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div className="col-md-3 footer-soc animated fadeInUp">
