@@ -3,6 +3,7 @@ import events from 'store/events';
 import groups from 'store/groups';
 import me from 'store/me';
 import ui from 'store/ui';
+import loader from 'store/loader';
 import middlewares from 'store/middlewares';
 
 const store = createStore({
@@ -10,6 +11,7 @@ const store = createStore({
   groups,
   me,
   ui,
+  loader,
 }, {
   middleware: middlewares,
 });

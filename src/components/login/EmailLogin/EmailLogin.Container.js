@@ -3,13 +3,12 @@ import { useActions } from 'easy-peasy';
 import gql from 'api/gql';
 import EmailLogin from './EmailLogin';
 
-function EmailLoginContainer() {
+function EmailLoginContainer({ onLogin }) {
 
   const emailLogin = useActions(actions => actions.me.emailLogin);
-  const showSnackbar = useActions(actions => actions.ui.showSnackbar);
 
-  const _handleLogin = ({ email, password }) => {
-    emailLogin(gql`
+  const _handleLogin = async ({ email, password }) => {
+    await emailLogin(gql`
       login(
         accountType: "email",
         email: ${email},
@@ -18,7 +17,7 @@ function EmailLoginContainer() {
         key
       }
     `);
-    showSnackbar({ message: 'Login successful', variant: 'success' });
+    onLogin();
   };
 
   return (

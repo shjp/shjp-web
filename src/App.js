@@ -15,6 +15,8 @@ import EventPage from 'components/events/EventPage';
 import EventCreatePage from 'components/events/EventCreatePage';
 import GroupList from 'components/groups/GroupList';
 import LoginPage from 'components/login/LoginPage';
+import LogoutPage from 'components/users/LogoutPage';
+import ProfilePage from 'components/users/ProfilePage';
 
 import './App.scss';
 
@@ -35,6 +37,8 @@ export default function App() {
                 <Route exact path="/events" component={EventPage}/>
                 <Route exact path="/events/create" component={EventCreatePage}/>
                 <Route exact path="/login" component={LoginPage}/>
+                <Route exact path="/logout" component={LogoutPage}/>
+                <Route exact path="/profile" component={ProfilePage}/>
             </Switch>
             <Footer/>
           </>

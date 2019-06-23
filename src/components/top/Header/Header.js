@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { useStore } from 'easy-peasy';
 
 import './Header.scss';
 
-export default function Header() {
+function Header() {
+
+    const me = useStore(state => state.me.me);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark shjp-bg-primary">
             <div className="container-fluid">
@@ -19,10 +23,20 @@ export default function Header() {
                 </ul>
                 </div>
                 <ul className="nav navbar-nav navbar-right">
-                    <li><Link to="/signup">Sign Up</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    {
+                        !me && (
+                            <li><Link to="/signup">Sign Up</Link></li>
+                        )
+                    }
+                    {
+                        me
+                        ? <li><Link to="/logout">Logout</Link></li>
+                        : <li><Link to="/login">Login</Link></li>
+                    }
                 </ul>
             </div>
         </nav>
     );
 };
+
+export default memo(Header);

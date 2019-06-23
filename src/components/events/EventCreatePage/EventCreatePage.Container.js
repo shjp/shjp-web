@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import { useActions } from 'easy-peasy';
 import gql from 'api/gql';
+import { decorate, withPermission } from 'decorators';
+import { permission } from 'enums/permission';
 import EventCreatePage from './EventCreatePage';
 
 function EventCreatePageContainer({ history }) {
@@ -36,4 +38,7 @@ function EventCreatePageContainer({ history }) {
   );
 }
 
-export default memo(EventCreatePageContainer);
+export default decorate(
+  memo,
+  withPermission(permission.WRITE_EVENTS)
+)(EventCreatePageContainer);
