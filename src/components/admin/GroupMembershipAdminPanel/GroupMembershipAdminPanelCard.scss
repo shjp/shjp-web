@@ -1,0 +1,33 @@
+.group-membership-admin-panel-card {
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+  padding: 12px;
+
+  .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .message {
+    .name {
+      font-weight: bold;
+    }
+  }
+
+  .role-selector {
+    flex: 0 1 160px;
+  }
+
+  .button-container {
+    flex: 0 1 120px;
+    display: flex;
+    flex-direction: row;
+
+    button {
+      margin: 2px 4px;
+    }
+  }
+}

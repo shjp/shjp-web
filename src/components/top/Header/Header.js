@@ -8,6 +8,10 @@ function Header() {
 
     const me = useStore(state => state.me.me);
 
+    const isAdmin = me && (me.groups || [])
+        .filter(group => group.permissions.can_admin_group)
+        .length > 0;
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark shjp-bg-primary">
             <div className="container-fluid">
@@ -23,16 +27,17 @@ function Header() {
                 </ul>
                 </div>
                 <ul className="nav navbar-nav navbar-right">
-                    {
-                        !me && (
-                            <li><Link to="/signup">Sign Up</Link></li>
-                        )
-                    }
-                    {
-                        me
-                        ? <li><Link to="/logout">Logout</Link></li>
-                        : <li><Link to="/login">Login</Link></li>
-                    }
+                    {isAdmin && (
+                        <li><Link to="/admin">Admin</Link></li>
+                    )}
+                    {!me && (
+                        <li><Link to="/signup">Sign Up</Link></li>
+                    )}
+                    {me ? (
+                        <li><Link to="/logout">Logout</Link></li>
+                    ) : (
+                        <li><Link to="/login">Login</Link></li>
+                    )}
                 </ul>
             </div>
         </nav>

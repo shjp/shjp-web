@@ -6,15 +6,16 @@ import DateFnsUtils from '@date-io/date-fns';
 import { StoreProvider } from 'easy-peasy';
 
 import store from 'store';
+import AdminPage from 'components/admin/AdminPage';
+import EventPage from 'components/events/EventPage';
+import EventCreatePage from 'components/events/EventCreatePage';
+import GroupList from 'components/groups/GroupList';
+import LoginPage from 'components/login/LoginPage';
 import GlobalListener from 'components/top/GlobalListener';
 import Header from 'components/top/Header';
 import Footer from 'components/top/Footer';
 import Home from 'components/top/Home';
 import Developers from 'components/top/Developers';
-import EventPage from 'components/events/EventPage';
-import EventCreatePage from 'components/events/EventCreatePage';
-import GroupList from 'components/groups/GroupList';
-import LoginPage from 'components/login/LoginPage';
 import LogoutPage from 'components/users/LogoutPage';
 import ProfilePage from 'components/users/ProfilePage';
 
@@ -39,6 +40,7 @@ export default function App() {
                 <Route exact path="/login" component={LoginPage}/>
                 <Route exact path="/logout" component={LogoutPage}/>
                 <Route exact path="/profile" component={ProfilePage}/>
+                <Route exact path="/admin" component={AdminPage}/>
             </Switch>
             <Footer/>
           </>

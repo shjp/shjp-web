@@ -10,7 +10,7 @@
     "await-of": "^1.1.2",
     "axios": "^0.18.0",
     "date-fns": "^2.0.0-alpha.27",
-    "easy-peasy": "^2.1.6",
+    "easy-peasy": "^2.5.0",
     "google-maps-react": "^2.0.2",
     "node-sass": "^4.11.0",
     "primeicons": "^1.0.0",

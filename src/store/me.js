@@ -1,4 +1,4 @@
-import { action,  thunk } from 'easy-peasy';
+import { action, selector, thunk } from 'easy-peasy';
 import client from 'api/client';
 import gql from 'api/gql';
 import cache from 'cache';
@@ -8,6 +8,12 @@ export default {
   error: null,
   accessToken: null,
   me: null,
+
+  // selectors
+  groupsWithPermission: selector(
+    [state => state.me || {}],
+    ([me], [permission]) => (me.groups || []).filter(group => group.permissions[permission])
+  ),
 
   // actions
   storeMyProfile: action((state, me) => {
@@ -49,6 +55,7 @@ export default {
             can_write_comments
             can_write_announcements
             can_write_events
+            can_admin_group
             can_edit_users
           }
         }

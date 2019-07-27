@@ -1,0 +1,16 @@
+.group-roles-admin-panel {
+  .label {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 16px;
+  }
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 12px;
+    .role-add-button {
+      min-width: 32px;
+    }
+  }
+}

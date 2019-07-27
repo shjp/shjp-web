@@ -6,6 +6,11 @@ import PermissionDeniedPage from './PermissionDeniedPage';
 function withPermission(...permissions) {
   return Component => props => {
 
+    if (!permissions.length) {
+      console.error('withPermission decorator requires at least one permission');
+      return null;
+    }
+
     const WrappedComponent = withLogin(Component);
 
     const me = useStore(state => state.me.me);
