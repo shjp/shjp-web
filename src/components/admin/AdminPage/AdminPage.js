@@ -10,50 +10,44 @@ import { permission } from 'enums/permission';
 import './AdminPage.scss';
 
 function AdminPage() {
-
   const groupsAsAdmin = useStoreState(
     state => state.me.groupsWithPermission(permission.ADMIN_GROUP),
     [permission.ADMIN_GROUP]
   );
 
+  const [currentTab, setCurrentTab] = useState(0);
+
+  console.log('groupsAsAdmin = ', groupsAsAdmin);
+
   if (groupsAsAdmin.length < 1) {
     return (
       <div className="admin-page">
         <div className="title">Admin Panel</div>
-        <div>
-          You are not authorized to administer any groups.
-        </div>
+        <div>You are not authorized to administer any groups.</div>
       </div>
     );
   }
-
-  const [currentTab, setCurrentTab] = useState(0);
-
-  console.log('groupsAsAdmin = ', groupsAsAdmin);
 
   return (
     <div className="admin-page">
       <div className="title">Admin Panel</div>
       <div className="content">
         <Paper>
-          <Tabs value={currentTab} indicatorColor="primary" textColor="primary" onChange={(evt, val) => setCurrentTab(val)}>
+          <Tabs
+            value={currentTab}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={(evt, val) => setCurrentTab(val)}
+          >
             {groupsAsAdmin.map((group, index) => (
-              <Tab
-                key={index}
-                label={group.name}
-              />
+              <Tab key={index} label={group.name} />
             ))}
           </Tabs>
-          <GroupAdminPanel
-            group={groupsAsAdmin[currentTab]}
-          />
+          <GroupAdminPanel group={groupsAsAdmin[currentTab]} />
         </Paper>
       </div>
     </div>
   );
 }
 
-export default decorate(
-  memo,
-  withPermission(permission.ADMIN_GROUP)
-)(AdminPage);
+export default decorate(memo, withPermission(permission.ADMIN_GROUP))(AdminPage);
