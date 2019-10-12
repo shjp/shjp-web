@@ -12,13 +12,15 @@ import useFormValidation, { FORM_VALIDATION_TYPE } from 'components/hooks/useFor
 import { permission, permissionLabels } from 'enums/permission';
 import './GroupRolesAdminPanelRoleCreateModal.scss';
 
-function GroupRolesAdminPanelRoleCreateModal({ isOpen, close, onSubmit }) {
-
+function GroupRolesAdminPanelRoleCreateModal({ isOpen, groupId, close, onSubmit }) {
   const permissionKeys = Object.values(permission);
-  const defaultPermissions = permissionKeys.reduce((accum, key) => ({
-    ...accum,
-    [key]: false
-  }), {});
+  const defaultPermissions = permissionKeys.reduce(
+    (accum, key) => ({
+      ...accum,
+      [key]: false,
+    }),
+    {}
+  );
 
   const [roleName, setRoleName] = useState('');
   const [permissions, setPermissions] = useState(defaultPermissions);
@@ -26,34 +28,32 @@ function GroupRolesAdminPanelRoleCreateModal({ isOpen, close, onSubmit }) {
     {
       key: 'roleName',
       label: 'Role Name',
-      types: [
-        FORM_VALIDATION_TYPE.NON_EMPTY,
-      ],
+      types: [FORM_VALIDATION_TYPE.NON_EMPTY],
     },
   ]);
 
-  const _handleClose = () => {
-  };
+  const _handleClose = () => {};
 
-  const _validate = () => checkErrors({
-    roleName,
-  });
+  const _validate = () =>
+    checkErrors({
+      roleName,
+    });
 
   const _submit = () => {
     if (_validate()) {
       onSubmit({
         name: roleName,
-        ...permissions,
+        groupId,
+        permissions,
       });
+      close();
     }
   };
-
-
 
   const _setPermission = permKey => evt => {
     setPermissions({
       ...permissions,
-      [permKey]: evt.target.value,
+      [permKey]: evt.target.checked,
     });
   };
 
@@ -61,7 +61,8 @@ function GroupRolesAdminPanelRoleCreateModal({ isOpen, close, onSubmit }) {
     <Dialog
       className="group-roles-admin-panel-role-create-modal"
       open={isOpen}
-      onClose={_handleClose}>
+      onClose={_handleClose}
+    >
       <DialogTitle id="role-create-dialog-title">Add a new role</DialogTitle>
       <DialogContent>
         <TextField
@@ -73,14 +74,10 @@ function GroupRolesAdminPanelRoleCreateModal({ isOpen, close, onSubmit }) {
         />
         <div className="permissions-form">
           {permissionKeys.map(key => (
-            <div>
+            <div key={key}>
               <FormControlLabel
                 control={
-                  <Checkbox
-                    key={key}
-                    checked={permissions[key]}
-                    onChange={_setPermission(key)}
-                  />
+                  <Checkbox key={key} checked={permissions[key]} onChange={_setPermission(key)} />
                 }
                 label={permissionLabels[key]}
               />
@@ -92,7 +89,7 @@ function GroupRolesAdminPanelRoleCreateModal({ isOpen, close, onSubmit }) {
         <Button onClick={close} color="primary">
           Cancel
         </Button>
-        <Button onClick={_submit} color="primary" variant='contained'>
+        <Button onClick={_submit} color="primary" variant="contained">
           Submit
         </Button>
       </DialogActions>

@@ -10,30 +10,29 @@ import { permission, permissionLabels } from 'enums/permission';
 import './GroupRolesAdminPanelRolesTable.scss';
 
 function GroupRolesAdminPanelRolesTable({ roles }) {
-
   const permissionKeys = Object.values(permission);
 
   return (
-    <Table className="group-roles-admin-panel-roles-table" size='medium'>
+    <Table className="group-roles-admin-panel-roles-table" size="medium">
       <TableHead>
         <TableRow>
           <TableCell>Role</TableCell>
           {permissionKeys.map(key => (
-            <TableCell key={key} align="right">{permissionLabels[key]}</TableCell>
+            <TableCell key={key} align="right">
+              {permissionLabels[key]}
+            </TableCell>
           ))}
         </TableRow>
       </TableHead>
       <TableBody>
-        {roles.map(role => (
-          <TableRow key={role.name}>
+        {roles.map((role, index) => (
+          <TableRow key={role.name + '' + index}>
             <TableCell component="th" scope="row">
               {role.name}
             </TableCell>
             {permissionKeys.map(key => (
               <TableCell key={key} align="right">
-                {role.permissions[key] && (
-                  <CheckIcon/>
-                )}
+                {role.permissions[key] && <CheckIcon />}
               </TableCell>
             ))}
           </TableRow>

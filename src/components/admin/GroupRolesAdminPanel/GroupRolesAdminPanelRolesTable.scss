@@ -1,6 +1,10 @@
 .group-roles-admin-panel-roles-table {
+  width: calc(100% - 32px);
   background-color: white;
-  th, td {
+  margin: 16px;
+  border-radius: 4px;
+  th,
+  td {
     padding: 14px 16px;
   }
 }

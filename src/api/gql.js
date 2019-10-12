@@ -7,9 +7,11 @@ function gql(templates, ...vars) {
   if (templates.length !== vars.length + 1) {
     throw new Error(`Unexpected lengths of args received for gql template parser`);
   }
-  return vars.reduce((accum, curr, currIndex) => {
-    return `${accum}${toGraphqlValue(curr)}${templates[currIndex+1]}`;
-  }, templates[0]);
+  return vars
+    .reduce((accum, curr, currIndex) => {
+      return `${accum}${toGraphqlValue(curr)}${templates[currIndex + 1]}`;
+    }, templates[0])
+    .replace(/\s\s+/g, ' ');
 }
 
 function toGraphqlValue(val) {
@@ -18,7 +20,6 @@ function toGraphqlValue(val) {
   }
 
   if (val && typeof val === 'object') {
-
     if (val instanceof Date) {
       return `"${format(val, 'yyyy-MM-dd HH:mm:ss')}"`;
     }

@@ -13,14 +13,16 @@ class GraphQLClient {
   }
 
   async query(query, authToken) {
-    const [ resp, err ] = await of(this.axios.get('/graphql', {
-      params: {
-        query: `query { ${query} }`
-      },
-      headers: {
-        'Auth-Token': authToken,
-      },
-    }));
+    const [resp, err] = await of(
+      this.axios.get('/graphql', {
+        params: {
+          query: `query { ${query} }`,
+        },
+        headers: {
+          'Auth-Token': authToken,
+        },
+      })
+    );
     if (err || !resp || !resp.data || !resp.data.data) {
       console.warn('Failed query | error: ', err);
       return [null, err];
@@ -29,13 +31,19 @@ class GraphQLClient {
   }
 
   async mutate(mutation, authToken) {
-    const [ resp, err ] = await of(this.axios.post('/graphql', {
-      query: `mutation { ${mutation} }`,
-    }, {
-      headers: {
-        'Auth-Token': authToken,
-      },
-    }));
+    const [resp, err] = await of(
+      this.axios.post(
+        '/graphql',
+        {
+          query: `mutation { ${mutation} }`,
+        },
+        {
+          headers: {
+            'Auth-Token': authToken,
+          },
+        }
+      )
+    );
     if (err || !resp || !resp.data || !resp.data.data) {
       console.warn('Failed mutation | error: ', err);
       return [null, err];
@@ -50,7 +58,7 @@ class GraphQLClient {
 const client = new GraphQLClient({
   baseURL: apiURL,
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
