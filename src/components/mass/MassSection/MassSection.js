@@ -11,9 +11,7 @@ function MassSection({ mass = {} }) {
     <Card className="mass-section" variant="outlined">
       <div className="date">
         {// Hacky but works for now
-        format(new Date(`${date} 00:00:00 GMT-0500`), 'MMMM do, y', {
-          timeZone: 'Europe/London',
-        })}
+        format(new Date(`${date} 00:00:00 GMT-0500`), 'MMMM do, y')}
       </div>
       <CardContent className="content">
         {files.map(file => (
