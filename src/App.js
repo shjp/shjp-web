@@ -9,8 +9,10 @@ import store from 'store';
 import AdminPage from 'components/admin/AdminPage';
 import EventPage from 'components/events/EventPage';
 import EventCreatePage from 'components/events/EventCreatePage';
-import GroupList from 'components/groups/GroupList';
+import GroupPage from 'components/groups/GroupPage';
+import GroupCreatePage from 'components/groups/GroupCreatePage';
 import LoginPage from 'components/login/LoginPage';
+import MassPage from 'components/mass/MassPage';
 import PPTFilesDownloadPage from 'components/ppt/PPTFIlesDownloadPage';
 import GlobalListener from 'components/top/GlobalListener';
 import Header from 'components/top/Header';
@@ -35,7 +37,8 @@ export default function App() {
               {/*<Route path="/announcement" component={} />*/}
               <Route exact path="/" component={Home} />
               <Route exact path="/developers" component={Developers} />
-              <Route exact path="/groups" component={GroupList} />
+              <Route exact path="/groups" component={GroupPage} />
+              <Route exact path="/groups/create" component={GroupCreatePage} />
               <Route exact path="/events" component={EventPage} />
               <Route exact path="/events/create" component={EventCreatePage} />
               <Route exact path="/login" component={LoginPage} />
@@ -43,6 +46,7 @@ export default function App() {
               <Route exact path="/profile" component={ProfilePage} />
               <Route exact path="/admin" component={AdminPage} />
               <Route exact path="/ppt" component={PPTFilesDownloadPage} />
+              <Route exact path="/mass" component={MassPage} />
             </Switch>
             <Footer />
           </>

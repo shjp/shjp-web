@@ -1,5 +1,5 @@
 import { action, selector, thunk } from 'easy-peasy';
-import client from 'api/client';
+import client from 'api/graphql';
 import gql from 'api/gql';
 import cache from 'cache';
 
@@ -10,9 +10,8 @@ export default {
   me: null,
 
   // selectors
-  groupsWithPermission: selector(
-    [state => state.me || {}],
-    ([me], [permission]) => (me.groups || []).filter(group => group.permissions[permission])
+  groupsWithPermission: selector([state => state.me || {}], ([me], [permission]) =>
+    (me.groups || []).filter(group => group.permissions[permission])
   ),
 
   // actions
@@ -22,7 +21,7 @@ export default {
   storeAccessToken: action((state, key) => {
     state.accessToken = key;
   }),
-  clearMe: action((state) => {
+  clearMe: action(state => {
     state.me = null;
     state.accessToken = null;
   }),
@@ -33,7 +32,9 @@ export default {
   // thunks
   getMyProfile: thunk(async (actions, query, { dispatch, getState }) => {
     const { accessToken } = getState();
-    const [ data, err ] = await client.query(query || gql`
+    const [data, err] = await client.query(
+      query ||
+        gql`
       me {
         id
         name
@@ -60,7 +61,9 @@ export default {
           }
         }
       }
-    `, accessToken);
+    `,
+      accessToken
+    );
     if (err || !data || !data.me) {
       console.error('Error fetching profile, err = ', err, ', data = ', data);
       dispatch.ui.showSnackbar({ variant: 'error', message: 'Error fetching profile' });
@@ -71,7 +74,7 @@ export default {
     actions.setError(null);
   }),
   emailLogin: thunk(async (actions, query, { dispatch }) => {
-    const [ data, err ] = await client.mutate(query);
+    const [data, err] = await client.mutate(query);
     if (err || !data || !data.login) {
       dispatch.ui.showSnackbar({ variant: 'error', message: 'Login Failed' });
       return;
@@ -84,5 +87,5 @@ export default {
     // TODO: Actually bust the user session on server
     actions.clearMe();
     cache.remove(cache.ACCESS_TOKEN_KEY);
-  })
+  }),
 };

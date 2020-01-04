@@ -1,5 +1,6 @@
 import { action, thunk } from 'easy-peasy';
-import client from 'api/client';
+import client from 'api/graphql';
+import uploaderClient from 'api/uploader';
 import gql from 'api/gql';
 
 export default {
@@ -72,6 +73,42 @@ export default {
       return;
     }
     actions.handleGetGroups(data);
+  }),
+
+  createGroup: thunk(async (actions, payload, { dispatch }) => {
+    let [data, err] = await client.mutate(gql`
+      createGroup(
+        name: ${payload.name}
+        description: ${payload.description}
+      ) {
+        ref_id
+      }
+    `);
+    if (err) {
+      console.error('[groups.createGroup] error from server: ', err);
+      dispatch.ui.showSnackbar({
+        variant: 'error',
+        message: 'Group failed to be submitted for creation',
+      });
+      return err;
+    }
+
+    if (payload.image) {
+      [data, err] = await uploaderClient.uploadImage({
+        entityType: 'group',
+        relationType: 'profile',
+        file: payload.image,
+      });
+      if (err) {
+        console.error('[groups.createGroup] error from server:', err);
+        dispatch.ui.showSnackbar({
+          variant: 'error',
+          message: 'Group profile image failed to be submitted',
+        });
+        return err;
+      }
+    }
+    dispatch.ui.showSnackbar({ variant: 'success', message: 'Group submitted for creation' });
   }),
 
   createGroupRole: thunk(async (actions, payload, { dispatch }) => {

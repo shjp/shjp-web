@@ -1,5 +1,5 @@
 import { action, thunk } from 'easy-peasy';
-import client from 'api/client';
+import client from 'api/graphql';
 
 export default {
   // store
@@ -13,10 +13,13 @@ export default {
 
   // thunks
   createEvent: thunk(async (actions, query, { dispatch }) => {
-    const [ data, err ] = await client.mutate(query);
+    const [data, err] = await client.mutate(query);
     if (err) {
       console.error('[events.createEvent] error from server: ', err);
-      dispatch.ui.showSnackbar({ variant: 'error', message: 'Event failed to be submitted for creation' });
+      dispatch.ui.showSnackbar({
+        variant: 'error',
+        message: 'Event failed to be submitted for creation',
+      });
       return err;
     }
     actions.handleCreateEvent(data);

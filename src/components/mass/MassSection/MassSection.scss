@@ -1,0 +1,13 @@
+.mass-section {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  .date {
+    margin: 20px 0 0 30px;
+    font-weight: bold;
+  }
+  .content {
+    display: flex;
+    width: 100%;
+  }
+}

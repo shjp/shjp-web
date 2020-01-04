@@ -3,10 +3,11 @@ import { useActions, useStore } from 'easy-peasy';
 import LoginRedirectPage from './LoginRedirectPage';
 
 export default function withLogin(Component) {
-  return function (props) {
-
+  return function(props) {
     if (!props.history) {
-      console.error('Component must be registered as a route in order to be decorated with withLogin');
+      console.error(
+        'Component must be registered as a route in order to be decorated with withLogin'
+      );
       return null;
     }
 
@@ -23,14 +24,14 @@ export default function withLogin(Component) {
 
     console.log('me = ', me, ', accessToken = ', accessToken, ', sessionError =', sessionError);
     if (me) {
-      return <Component {...props}/>;
+      return <Component {...props} />;
     }
 
     if (accessToken) {
       getMyProfile();
-      return null;
+      return <div>Authenticating...</div>;
     }
 
-    return <LoginRedirectPage goToLoginPage={_goToLoginPage}/>;
-  }
+    return <LoginRedirectPage goToLoginPage={_goToLoginPage} />;
+  };
 }
