@@ -3,52 +3,51 @@ import { useActions, useStore } from 'easy-peasy';
 import MassSection from 'components/mass/MassSection';
 import './MassPage.scss';
 
-const fake = [
-  {
-    date: '2020-01-20',
-    files: [
-      {
-        type: 'ppt',
-        name: 'Foo bar',
-        url: 'http://www.google.com',
-      },
-      {
-        type: 'image',
-        name: 'Foo baz',
-        url: 'http://www.google.com',
-      },
-      {
-        type: 'txt',
-        name: 'Foo bax',
-        url: 'http://www.google.com',
-      },
-    ],
-  },
-  {
-    date: '2020-01-27',
-    files: [
-      {
-        type: 'ppt',
-        name: 'Foo bar1',
-        url: 'http://www.google.com',
-      },
-      {
-        type: 'image',
-        name: 'Foo baz1',
-        url: 'http://www.google.com',
-      },
-      {
-        type: 'txt',
-        name: 'Foo bax1',
-        url: 'http://www.google.com',
-      },
-    ],
-  },
-];
+const getToday = () => {
+  const rawToday = new Date();
+  let month = rawToday.getMonth() + 1;
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  let date = rawToday.getUTCDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${rawToday.getFullYear()}-${month}-${date}`;
+};
 
 function MassPage() {
   const getMassFiles = useActions(actions => actions.massFiles.getMassFiles);
   const massFiles = useStore(state => state.massFiles.massFiles);
+
+  const _scrollToMassSection = (id, duration) => {
+    const el = document.getElementById(id);
+    const targetY = window.pageYOffset + el.getBoundingClientRect().top;
+    const startingY = window.pageYOffset;
+    let start;
+    window.requestAnimationFrame(function iter(timestamp) {
+      if (!start) {
+        start = timestamp;
+      }
+      let step = timestamp - start;
+      let percent = Math.min(step / duration, 1);
+
+      window.scrollTo(0, startingY + (targetY - startingY) * percent);
+
+      if (step < duration) {
+        window.requestAnimationFrame(iter);
+      }
+    });
+  };
+
+  const _getNextMassDate = ms => {
+    const today = getToday();
+    const futureMasses = ms.filter(mass => mass.date >= today);
+    if (futureMasses.length === 0) {
+      return ms[0];
+    }
+    return futureMasses.sort((a, b) => (a.date < b.date ? -1 : 1))[0].date;
+  };
 
   useEffect(() => {
     getMassFiles();
@@ -62,12 +61,20 @@ function MassPage() {
     }, {})
   )
     .map(([date, files]) => ({ date, files }))
-    .sort((a, b) => a > b);
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
+
+  useEffect(() => {
+    if (masses.length) {
+      _scrollToMassSection(_getNextMassDate(masses), 1000);
+    }
+  }, [masses]);
 
   return (
     <div className="mass-page">
       {masses.map(mass => (
-        <MassSection mass={mass} />
+        <div id={mass.date}>
+          <MassSection mass={mass} />
+        </div>
       ))}
     </div>
   );

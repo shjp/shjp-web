@@ -21,7 +21,7 @@ function MassFileCard({ file = {} }) {
   return (
     <a className="mass-file-card col-sm-3" href={file.url}>
       <Card raised>
-        <div className={`banner ${_getFileTypeStyle(file.type)}`} />
+        <div className={`banner ${_getFileTypeStyle(file.type)}`}>{file.type}</div>
         <CardContent>
           <span>{file.name}</span>
         </CardContent>
