@@ -8,6 +8,15 @@
   }
   .content {
     display: flex;
+    flex-direction: row;
     width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .mass-section {
+    .content {
+      flex-direction: column;
+    }
   }
 }

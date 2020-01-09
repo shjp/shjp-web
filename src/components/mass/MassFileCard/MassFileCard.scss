@@ -31,3 +31,9 @@
     background-color: black;
   }
 }
+
+@media (max-width: 576px) {
+  .mass-file-card {
+    margin: 10px 0;
+  }
+}

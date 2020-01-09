@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import './MassFileCard.scss';
@@ -19,7 +18,7 @@ function MassFileCard({ file = {} }) {
   };
 
   return (
-    <a className="mass-file-card col-sm-3" href={file.url}>
+    <a className="mass-file-card col-xs-12 col-md-3" href={file.url}>
       <Card raised>
         <div className={`banner ${_getFileTypeStyle(file.type)}`}>{file.type}</div>
         <CardContent>
