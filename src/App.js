@@ -13,7 +13,6 @@ import GroupPage from 'components/groups/GroupPage';
 import GroupCreatePage from 'components/groups/GroupCreatePage';
 import LoginPage from 'components/login/LoginPage';
 import MassPage from 'components/mass/MassPage';
-import PPTFilesDownloadPage from 'components/ppt/PPTFIlesDownloadPage';
 import GlobalListener from 'components/top/GlobalListener';
 import Header from 'components/top/Header';
 import Footer from 'components/top/Footer';
@@ -45,7 +44,6 @@ export default function App() {
               <Route exact path="/logout" component={LogoutPage} />
               <Route exact path="/profile" component={ProfilePage} />
               <Route exact path="/admin" component={AdminPage} />
-              <Route exact path="/ppt" component={PPTFilesDownloadPage} />
               <Route exact path="/mass" component={MassPage} />
             </Switch>
             <Footer />

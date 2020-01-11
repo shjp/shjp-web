@@ -72,7 +72,7 @@ function MassPage() {
   return (
     <div className="mass-page">
       {masses.map(mass => (
-        <div id={mass.date}>
+        <div key={mass.date} id={mass.date}>
           <MassSection mass={mass} />
         </div>
       ))}

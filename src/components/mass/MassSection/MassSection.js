@@ -15,7 +15,7 @@ function MassSection({ mass = {} }) {
       </div>
       <CardContent className="content">
         {files.map(file => (
-          <MassFileCard file={file} />
+          <MassFileCard key={file.url} file={file} />
         ))}
       </CardContent>
     </Card>
