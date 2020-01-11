@@ -68,6 +68,7 @@ export default {
       console.error('Error fetching profile, err = ', err, ', data = ', data);
       dispatch.ui.showSnackbar({ variant: 'error', message: 'Error fetching profile' });
       actions.setError('Error fetching profile');
+      cache.remove(cache.ACCESS_TOKEN_KEY);
       return;
     }
     actions.storeMyProfile(data.me);
