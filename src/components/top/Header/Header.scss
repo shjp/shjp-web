@@ -1,17 +1,25 @@
 .navbar-header > a {
-    margin-right: 40px;
-    font-weight: bold;
+  color: white;
+  margin-right: 40px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+  }
 }
 
-a {
-    color: white;
-    margin-right: 30px;
+.nav {
+  .navbar-nav {
+    .nav-item {
+      color: white;
+      margin-right: 30px;
+    }
+  }
 }
 
 #dropdown {
-    background-color: #e7e7e7;
+  background-color: #e7e7e7;
 }
 #dropdown > li > a {
-    color: #0c5460;
-    margin-left: 10px;
+  color: #0c5460;
+  margin-left: 10px;
 }
