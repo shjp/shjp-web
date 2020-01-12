@@ -75,7 +75,7 @@ function GroupCreatePage({ onSubmit }) {
             singleImage
             buttonText="Choose image"
             onChange={_onImageSelected}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+            imgExtension={['.jpg', 'jpeg', '.png']}
             maxFileSize={5242880}
           />
           {image && (
