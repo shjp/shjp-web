@@ -5,14 +5,16 @@ import CardContent from '@material-ui/core/CardContent';
 import MassFileCard from 'components/mass/MassFileCard';
 import './MassSection.scss';
 
+function formatTime(dateStr) {
+  // Hacky but works for now
+  return format(new Date(`${dateStr}T00:00:00-05:00`), 'MMMM do, y');
+}
+
 function MassSection({ mass = {} }) {
   const { date, files = [] } = mass;
   return (
     <Card className="mass-section" variant="outlined">
-      <div className="date">
-        {// Hacky but works for now
-        format(new Date(`${date} 00:00:00 GMT-0500`), 'MMMM do, y')}
-      </div>
+      <div className="date">{formatTime(date)}</div>
       <CardContent className="content">
         {files.map(file => (
           <MassFileCard key={file.url} file={file} />
