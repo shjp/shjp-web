@@ -22,6 +22,10 @@ function MassPage() {
 
   const _scrollToMassSection = (id, duration) => {
     const el = document.getElementById(id);
+    if (!el) {
+      return;
+    }
+
     const targetY = window.pageYOffset + el.getBoundingClientRect().top;
     const startingY = window.pageYOffset;
     let start;
