@@ -12,6 +12,7 @@ import EventCreatePage from 'components/events/EventCreatePage';
 import GroupPage from 'components/groups/GroupPage';
 import GroupCreatePage from 'components/groups/GroupCreatePage';
 import LoginPage from 'components/login/LoginPage';
+import MassFileUpload from 'components/mass/MassFileUpload';
 import MassPage from 'components/mass/MassPage';
 import GlobalListener from 'components/top/GlobalListener';
 import Header from 'components/top/Header';
@@ -45,6 +46,7 @@ export default function App() {
               <Route exact path="/profile" component={ProfilePage} />
               <Route exact path="/admin" component={AdminPage} />
               <Route exact path="/mass" component={MassPage} />
+              <Route exact path="/mass/upload" component={MassFileUpload} />
             </Switch>
             <Footer />
           </>

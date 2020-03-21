@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useActions, useStore } from 'easy-peasy';
+import Button from '@material-ui/core/Button';
 import MassSection from 'components/mass/MassSection';
 import './MassPage.scss';
 
@@ -16,7 +17,7 @@ const getToday = () => {
   return `${rawToday.getFullYear()}-${month}-${date}`;
 };
 
-function MassPage() {
+function MassPage({ history, match }) {
   const getMassFiles = useActions(actions => actions.massFiles.getMassFiles);
   const massFiles = useStore(state => state.massFiles.massFiles);
 
@@ -75,6 +76,17 @@ function MassPage() {
 
   return (
     <div className="mass-page">
+      {/* TODO: put this back once mass file upload is complete */}
+      {/* <div className="mass-page-create-button">
+        <Button
+          variant="contained"
+          color="primary"
+          size="medium"
+          onClick={() => history.push(`${match.url}/upload`)}
+        >
+          Upload Mass File
+        </Button>
+      </div> */}
       {masses.map(mass => (
         <div key={mass.date} id={mass.date}>
           <MassSection mass={mass} />

@@ -1,3 +1,9 @@
 .mass-page {
   padding: 10px;
+
+  &-create-button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+  }
 }

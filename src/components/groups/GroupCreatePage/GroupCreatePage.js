@@ -11,6 +11,7 @@ function GroupCreatePage({ onSubmit }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const [errors, checkErrors] = useFormValidation([
     {
@@ -28,7 +29,9 @@ function GroupCreatePage({ onSubmit }) {
 
   const _onImageSelected = files => {
     // Set the most recently selected file
-    setImage(URL.createObjectURL(files[files.length - 1]));
+    const file = files[files.length - 1];
+    setImage(file);
+    setImageUrl(URL.createObjectURL(file));
   };
 
   const _handleSubmit = () => {
@@ -78,9 +81,9 @@ function GroupCreatePage({ onSubmit }) {
             imgExtension={['.jpg', 'jpeg', '.png']}
             maxFileSize={5242880}
           />
-          {image && (
+          {imageUrl && (
             <div>
-              <img src={image} />
+              <img src={imageUrl} />
             </div>
           )}
         </div>
